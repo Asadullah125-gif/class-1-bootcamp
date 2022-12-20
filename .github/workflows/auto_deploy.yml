@@ -1,0 +1,31 @@
+name: class-one-bootcamp
+
+
+on: 
+  push:
+    branches: [ master ]
+
+jobs:
+
+  build:
+    runs-on: window
+    
+    steps:
+      - uses: actions/checkout@v2
+      
+      - name: Installing Node
+        uses: actions/setup-node@v2-beta
+        with:
+           node-version: 18 
+           
+      - name: Installing surge
+        run: npm install --global surge
+        
+      - name: deploying using surge
+        run: surge ./class-one-bootcamp.surge.sh --token $ {{secrets.SURGE_TOKEN}}
+          
+         
+      
+      
+       
+       
